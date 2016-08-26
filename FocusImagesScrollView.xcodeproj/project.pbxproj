@@ -1,0 +1,695 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BF1273C81D6E85E200C81FDC /* XMFoucusSwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1273C71D6E85E200C81FDC /* XMFoucusSwipeView.m */; };
+		BF1273CB1D6E8E5B00C81FDC /* XMMallHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1273CA1D6E8E5B00C81FDC /* XMMallHomePageViewController.m */; };
+		BF1273CF1D6EC25000C81FDC /* MyLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1273CE1D6EC25000C81FDC /* MyLogger.m */; };
+		BF1273D21D6ECFF200C81FDC /* PresentTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1273D11D6ECFF200C81FDC /* PresentTestViewController.m */; };
+		BF1273D71D6ED6E500C81FDC /* return@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1273D51D6ED6E500C81FDC /* return@2x.png */; };
+		BF1273D81D6ED6E500C81FDC /* return@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1273D61D6ED6E500C81FDC /* return@3x.png */; };
+		BF1273DC1D6ED78500C81FDC /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1273DB1D6ED78500C81FDC /* UINavigationController+FDFullscreenPopGesture.m */; };
+		BFBF4CB91D6D3EE60068751C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBF4CB81D6D3EE60068751C /* main.m */; };
+		BFBF4CBC1D6D3EE60068751C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBF4CBB1D6D3EE60068751C /* AppDelegate.m */; };
+		BFBF4CC41D6D3EE60068751C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFBF4CC31D6D3EE60068751C /* Assets.xcassets */; };
+		BFBF4CD21D6D3EE60068751C /* FocusImagesScrollViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBF4CD11D6D3EE60068751C /* FocusImagesScrollViewTests.m */; };
+		BFBF4CDD1D6D3EE60068751C /* FocusImagesScrollViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBF4CDC1D6D3EE60068751C /* FocusImagesScrollViewUITests.m */; };
+		BFBF4CEF1D6D3FBE0068751C /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBF4CEE1D6D3FBE0068751C /* SwipeView.m */; };
+		BFBF4CFD1D6D8B410068751C /* XMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBF4CFC1D6D8B410068751C /* XMBaseViewController.m */; };
+		BFBF4D041D6D8CC90068751C /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBF4D021D6D8CC90068751C /* TestViewController.m */; };
+		BFBF4D0B1D6DAC430068751C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFBF4D0A1D6DAC430068751C /* Launch Screen.storyboard */; };
+		C3DB815929436B754DF5C30C /* libPods-FocusImagesScrollView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0F6D8F6B70D300C0AE2065 /* libPods-FocusImagesScrollView.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BFBF4CCE1D6D3EE60068751C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFBF4CAC1D6D3EE60068751C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFBF4CB31D6D3EE60068751C;
+			remoteInfo = FocusImagesScrollView;
+		};
+		BFBF4CD91D6D3EE60068751C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFBF4CAC1D6D3EE60068751C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFBF4CB31D6D3EE60068751C;
+			remoteInfo = FocusImagesScrollView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		18B0F5D6ECC9807C47B019E4 /* Pods-FocusImagesScrollView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocusImagesScrollView.release.xcconfig"; path = "Pods/Target Support Files/Pods-FocusImagesScrollView/Pods-FocusImagesScrollView.release.xcconfig"; sourceTree = "<group>"; };
+		76C9AA8C8945C7E8A01CA2F3 /* Pods-FocusImagesScrollView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FocusImagesScrollView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FocusImagesScrollView/Pods-FocusImagesScrollView.debug.xcconfig"; sourceTree = "<group>"; };
+		BF1273C61D6E85E200C81FDC /* XMFoucusSwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMFoucusSwipeView.h; sourceTree = "<group>"; };
+		BF1273C71D6E85E200C81FDC /* XMFoucusSwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMFoucusSwipeView.m; sourceTree = "<group>"; };
+		BF1273C91D6E8E5B00C81FDC /* XMMallHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMMallHomePageViewController.h; sourceTree = "<group>"; };
+		BF1273CA1D6E8E5B00C81FDC /* XMMallHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMMallHomePageViewController.m; sourceTree = "<group>"; };
+		BF1273CD1D6EC25000C81FDC /* MyLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLogger.h; sourceTree = "<group>"; };
+		BF1273CE1D6EC25000C81FDC /* MyLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLogger.m; sourceTree = "<group>"; };
+		BF1273D01D6ECFF200C81FDC /* PresentTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentTestViewController.h; sourceTree = "<group>"; };
+		BF1273D11D6ECFF200C81FDC /* PresentTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentTestViewController.m; sourceTree = "<group>"; };
+		BF1273D51D6ED6E500C81FDC /* return@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "return@2x.png"; sourceTree = "<group>"; };
+		BF1273D61D6ED6E500C81FDC /* return@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "return@3x.png"; sourceTree = "<group>"; };
+		BF1273DA1D6ED78500C81FDC /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
+		BF1273DB1D6ED78500C81FDC /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
+		BFBF4CB41D6D3EE60068751C /* FocusImagesScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusImagesScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFBF4CB81D6D3EE60068751C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BFBF4CBA1D6D3EE60068751C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BFBF4CBB1D6D3EE60068751C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BFBF4CC31D6D3EE60068751C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BFBF4CC81D6D3EE60068751C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFBF4CCD1D6D3EE60068751C /* FocusImagesScrollViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FocusImagesScrollViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFBF4CD11D6D3EE60068751C /* FocusImagesScrollViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FocusImagesScrollViewTests.m; sourceTree = "<group>"; };
+		BFBF4CD31D6D3EE60068751C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFBF4CD81D6D3EE60068751C /* FocusImagesScrollViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FocusImagesScrollViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFBF4CDC1D6D3EE60068751C /* FocusImagesScrollViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FocusImagesScrollViewUITests.m; sourceTree = "<group>"; };
+		BFBF4CDE1D6D3EE60068751C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFBF4CED1D6D3FBE0068751C /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		BFBF4CEE1D6D3FBE0068751C /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		BFBF4CFB1D6D8B410068751C /* XMBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMBaseViewController.h; sourceTree = "<group>"; };
+		BFBF4CFC1D6D8B410068751C /* XMBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMBaseViewController.m; sourceTree = "<group>"; };
+		BFBF4D011D6D8CC90068751C /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		BFBF4D021D6D8CC90068751C /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		BFBF4D0A1D6DAC430068751C /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
+		CE0F6D8F6B70D300C0AE2065 /* libPods-FocusImagesScrollView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FocusImagesScrollView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BFBF4CB11D6D3EE60068751C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3DB815929436B754DF5C30C /* libPods-FocusImagesScrollView.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFBF4CCA1D6D3EE60068751C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFBF4CD51D6D3EE60068751C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B0E06BA0E4F1B3586C7F9235 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE0F6D8F6B70D300C0AE2065 /* libPods-FocusImagesScrollView.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB616277C4C5BA7A642E510D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				76C9AA8C8945C7E8A01CA2F3 /* Pods-FocusImagesScrollView.debug.xcconfig */,
+				18B0F5D6ECC9807C47B019E4 /* Pods-FocusImagesScrollView.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BF1273CC1D6EC1E800C81FDC /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				BF1273CD1D6EC25000C81FDC /* MyLogger.h */,
+				BF1273CE1D6EC25000C81FDC /* MyLogger.m */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		BF1273D41D6ED6E500C81FDC /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				BF1273D51D6ED6E500C81FDC /* return@2x.png */,
+				BF1273D61D6ED6E500C81FDC /* return@3x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		BF1273D91D6ED78500C81FDC /* FDFullscreenPopGesture */ = {
+			isa = PBXGroup;
+			children = (
+				BF1273DA1D6ED78500C81FDC /* UINavigationController+FDFullscreenPopGesture.h */,
+				BF1273DB1D6ED78500C81FDC /* UINavigationController+FDFullscreenPopGesture.m */,
+			);
+			path = FDFullscreenPopGesture;
+			sourceTree = "<group>";
+		};
+		BFBF4CAB1D6D3EE60068751C = {
+			isa = PBXGroup;
+			children = (
+				BFBF4CB61D6D3EE60068751C /* FocusImagesScrollView */,
+				BFBF4CD01D6D3EE60068751C /* FocusImagesScrollViewTests */,
+				BFBF4CDB1D6D3EE60068751C /* FocusImagesScrollViewUITests */,
+				BFBF4CB51D6D3EE60068751C /* Products */,
+				BB616277C4C5BA7A642E510D /* Pods */,
+				B0E06BA0E4F1B3586C7F9235 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BFBF4CB51D6D3EE60068751C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BFBF4CB41D6D3EE60068751C /* FocusImagesScrollView.app */,
+				BFBF4CCD1D6D3EE60068751C /* FocusImagesScrollViewTests.xctest */,
+				BFBF4CD81D6D3EE60068751C /* FocusImagesScrollViewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BFBF4CB61D6D3EE60068751C /* FocusImagesScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				BF1273D41D6ED6E500C81FDC /* Images */,
+				BF1273CC1D6EC1E800C81FDC /* Utility */,
+				BFBF4CF01D6D3FE90068751C /* Views */,
+				BFBF4CF71D6D8A970068751C /* Controllers */,
+				BFBF4CEB1D6D3FBE0068751C /* ThirdParty */,
+				BFBF4CBA1D6D3EE60068751C /* AppDelegate.h */,
+				BFBF4CBB1D6D3EE60068751C /* AppDelegate.m */,
+				BFBF4D0A1D6DAC430068751C /* Launch Screen.storyboard */,
+				BFBF4CC31D6D3EE60068751C /* Assets.xcassets */,
+				BFBF4CC81D6D3EE60068751C /* Info.plist */,
+				BFBF4CB71D6D3EE60068751C /* Supporting Files */,
+			);
+			path = FocusImagesScrollView;
+			sourceTree = "<group>";
+		};
+		BFBF4CB71D6D3EE60068751C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BFBF4CB81D6D3EE60068751C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BFBF4CD01D6D3EE60068751C /* FocusImagesScrollViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				BFBF4CD11D6D3EE60068751C /* FocusImagesScrollViewTests.m */,
+				BFBF4CD31D6D3EE60068751C /* Info.plist */,
+			);
+			path = FocusImagesScrollViewTests;
+			sourceTree = "<group>";
+		};
+		BFBF4CDB1D6D3EE60068751C /* FocusImagesScrollViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BFBF4CDC1D6D3EE60068751C /* FocusImagesScrollViewUITests.m */,
+				BFBF4CDE1D6D3EE60068751C /* Info.plist */,
+			);
+			path = FocusImagesScrollViewUITests;
+			sourceTree = "<group>";
+		};
+		BFBF4CEB1D6D3FBE0068751C /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				BF1273D91D6ED78500C81FDC /* FDFullscreenPopGesture */,
+				BFBF4CEC1D6D3FBE0068751C /* SwipeView */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		BFBF4CEC1D6D3FBE0068751C /* SwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				BFBF4CED1D6D3FBE0068751C /* SwipeView.h */,
+				BFBF4CEE1D6D3FBE0068751C /* SwipeView.m */,
+			);
+			path = SwipeView;
+			sourceTree = "<group>";
+		};
+		BFBF4CF01D6D3FE90068751C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BF1273C61D6E85E200C81FDC /* XMFoucusSwipeView.h */,
+				BF1273C71D6E85E200C81FDC /* XMFoucusSwipeView.m */,
+			);
+			name = Views;
+			path = views;
+			sourceTree = "<group>";
+		};
+		BFBF4CF71D6D8A970068751C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BFBF4CFB1D6D8B410068751C /* XMBaseViewController.h */,
+				BFBF4CFC1D6D8B410068751C /* XMBaseViewController.m */,
+				BFBF4D011D6D8CC90068751C /* TestViewController.h */,
+				BFBF4D021D6D8CC90068751C /* TestViewController.m */,
+				BF1273C91D6E8E5B00C81FDC /* XMMallHomePageViewController.h */,
+				BF1273CA1D6E8E5B00C81FDC /* XMMallHomePageViewController.m */,
+				BF1273D01D6ECFF200C81FDC /* PresentTestViewController.h */,
+				BF1273D11D6ECFF200C81FDC /* PresentTestViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BFBF4CB31D6D3EE60068751C /* FocusImagesScrollView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFBF4CE11D6D3EE60068751C /* Build configuration list for PBXNativeTarget "FocusImagesScrollView" */;
+			buildPhases = (
+				9729DA5D4BF44F981967AA8E /* [CP] Check Pods Manifest.lock */,
+				BFBF4CB01D6D3EE60068751C /* Sources */,
+				BFBF4CB11D6D3EE60068751C /* Frameworks */,
+				BFBF4CB21D6D3EE60068751C /* Resources */,
+				A1A00BB4D345D1E739C9AD07 /* [CP] Embed Pods Frameworks */,
+				C5840EDD4CA9F0886CE94EBE /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FocusImagesScrollView;
+			productName = FocusImagesScrollView;
+			productReference = BFBF4CB41D6D3EE60068751C /* FocusImagesScrollView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BFBF4CCC1D6D3EE60068751C /* FocusImagesScrollViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFBF4CE41D6D3EE60068751C /* Build configuration list for PBXNativeTarget "FocusImagesScrollViewTests" */;
+			buildPhases = (
+				BFBF4CC91D6D3EE60068751C /* Sources */,
+				BFBF4CCA1D6D3EE60068751C /* Frameworks */,
+				BFBF4CCB1D6D3EE60068751C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFBF4CCF1D6D3EE60068751C /* PBXTargetDependency */,
+			);
+			name = FocusImagesScrollViewTests;
+			productName = FocusImagesScrollViewTests;
+			productReference = BFBF4CCD1D6D3EE60068751C /* FocusImagesScrollViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BFBF4CD71D6D3EE60068751C /* FocusImagesScrollViewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFBF4CE71D6D3EE60068751C /* Build configuration list for PBXNativeTarget "FocusImagesScrollViewUITests" */;
+			buildPhases = (
+				BFBF4CD41D6D3EE60068751C /* Sources */,
+				BFBF4CD51D6D3EE60068751C /* Frameworks */,
+				BFBF4CD61D6D3EE60068751C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFBF4CDA1D6D3EE60068751C /* PBXTargetDependency */,
+			);
+			name = FocusImagesScrollViewUITests;
+			productName = FocusImagesScrollViewUITests;
+			productReference = BFBF4CD81D6D3EE60068751C /* FocusImagesScrollViewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFBF4CAC1D6D3EE60068751C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "jmxonline@sina.com";
+				TargetAttributes = {
+					BFBF4CB31D6D3EE60068751C = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					BFBF4CCC1D6D3EE60068751C = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = BFBF4CB31D6D3EE60068751C;
+					};
+					BFBF4CD71D6D3EE60068751C = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = BFBF4CB31D6D3EE60068751C;
+					};
+				};
+			};
+			buildConfigurationList = BFBF4CAF1D6D3EE60068751C /* Build configuration list for PBXProject "FocusImagesScrollView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BFBF4CAB1D6D3EE60068751C;
+			productRefGroup = BFBF4CB51D6D3EE60068751C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BFBF4CB31D6D3EE60068751C /* FocusImagesScrollView */,
+				BFBF4CCC1D6D3EE60068751C /* FocusImagesScrollViewTests */,
+				BFBF4CD71D6D3EE60068751C /* FocusImagesScrollViewUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BFBF4CB21D6D3EE60068751C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF1273D71D6ED6E500C81FDC /* return@2x.png in Resources */,
+				BFBF4D0B1D6DAC430068751C /* Launch Screen.storyboard in Resources */,
+				BFBF4CC41D6D3EE60068751C /* Assets.xcassets in Resources */,
+				BF1273D81D6ED6E500C81FDC /* return@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFBF4CCB1D6D3EE60068751C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFBF4CD61D6D3EE60068751C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9729DA5D4BF44F981967AA8E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A1A00BB4D345D1E739C9AD07 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FocusImagesScrollView/Pods-FocusImagesScrollView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5840EDD4CA9F0886CE94EBE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FocusImagesScrollView/Pods-FocusImagesScrollView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BFBF4CB01D6D3EE60068751C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF1273DC1D6ED78500C81FDC /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
+				BFBF4CFD1D6D8B410068751C /* XMBaseViewController.m in Sources */,
+				BFBF4D041D6D8CC90068751C /* TestViewController.m in Sources */,
+				BF1273C81D6E85E200C81FDC /* XMFoucusSwipeView.m in Sources */,
+				BF1273CF1D6EC25000C81FDC /* MyLogger.m in Sources */,
+				BF1273D21D6ECFF200C81FDC /* PresentTestViewController.m in Sources */,
+				BFBF4CEF1D6D3FBE0068751C /* SwipeView.m in Sources */,
+				BFBF4CBC1D6D3EE60068751C /* AppDelegate.m in Sources */,
+				BF1273CB1D6E8E5B00C81FDC /* XMMallHomePageViewController.m in Sources */,
+				BFBF4CB91D6D3EE60068751C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFBF4CC91D6D3EE60068751C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFBF4CD21D6D3EE60068751C /* FocusImagesScrollViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFBF4CD41D6D3EE60068751C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFBF4CDD1D6D3EE60068751C /* FocusImagesScrollViewUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BFBF4CCF1D6D3EE60068751C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFBF4CB31D6D3EE60068751C /* FocusImagesScrollView */;
+			targetProxy = BFBF4CCE1D6D3EE60068751C /* PBXContainerItemProxy */;
+		};
+		BFBF4CDA1D6D3EE60068751C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFBF4CB31D6D3EE60068751C /* FocusImagesScrollView */;
+			targetProxy = BFBF4CD91D6D3EE60068751C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BFBF4CDF1D6D3EE60068751C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BFBF4CE01D6D3EE60068751C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BFBF4CE21D6D3EE60068751C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76C9AA8C8945C7E8A01CA2F3 /* Pods-FocusImagesScrollView.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"ALPHA=1",
+					"$(inherited)",
+				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				INFOPLIST_FILE = FocusImagesScrollView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jmxonline.FocusImagesScrollView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BFBF4CE31D6D3EE60068751C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18B0F5D6ECC9807C47B019E4 /* Pods-FocusImagesScrollView.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = "ALPHA=1";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				INFOPLIST_FILE = FocusImagesScrollView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jmxonline.FocusImagesScrollView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BFBF4CE51D6D3EE60068751C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FocusImagesScrollViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jmxonline.FocusImagesScrollViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FocusImagesScrollView.app/FocusImagesScrollView";
+			};
+			name = Debug;
+		};
+		BFBF4CE61D6D3EE60068751C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FocusImagesScrollViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jmxonline.FocusImagesScrollViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FocusImagesScrollView.app/FocusImagesScrollView";
+			};
+			name = Release;
+		};
+		BFBF4CE81D6D3EE60068751C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FocusImagesScrollViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jmxonline.FocusImagesScrollViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FocusImagesScrollView;
+			};
+			name = Debug;
+		};
+		BFBF4CE91D6D3EE60068751C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FocusImagesScrollViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jmxonline.FocusImagesScrollViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FocusImagesScrollView;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BFBF4CAF1D6D3EE60068751C /* Build configuration list for PBXProject "FocusImagesScrollView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFBF4CDF1D6D3EE60068751C /* Debug */,
+				BFBF4CE01D6D3EE60068751C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFBF4CE11D6D3EE60068751C /* Build configuration list for PBXNativeTarget "FocusImagesScrollView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFBF4CE21D6D3EE60068751C /* Debug */,
+				BFBF4CE31D6D3EE60068751C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFBF4CE41D6D3EE60068751C /* Build configuration list for PBXNativeTarget "FocusImagesScrollViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFBF4CE51D6D3EE60068751C /* Debug */,
+				BFBF4CE61D6D3EE60068751C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFBF4CE71D6D3EE60068751C /* Build configuration list for PBXNativeTarget "FocusImagesScrollViewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFBF4CE81D6D3EE60068751C /* Debug */,
+				BFBF4CE91D6D3EE60068751C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFBF4CAC1D6D3EE60068751C /* Project object */;
+}
