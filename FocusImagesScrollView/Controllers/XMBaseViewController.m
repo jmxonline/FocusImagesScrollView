@@ -8,6 +8,7 @@
 
 #import "XMBaseViewController.h"
 #import "MyLogger.h"
+#import "XMUIDefines.h"
 
 NSString* const kNormalCell = @"Cell";
 #define kDefaultBackgroundColor [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]

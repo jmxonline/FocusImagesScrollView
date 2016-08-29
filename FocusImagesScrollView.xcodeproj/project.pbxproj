@@ -23,6 +23,7 @@
 		BFBF4CFD1D6D8B410068751C /* XMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBF4CFC1D6D8B410068751C /* XMBaseViewController.m */; };
 		BFBF4D041D6D8CC90068751C /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBF4D021D6D8CC90068751C /* TestViewController.m */; };
 		BFBF4D0B1D6DAC430068751C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFBF4D0A1D6DAC430068751C /* Launch Screen.storyboard */; };
+		BFE713111D73CF6800050395 /* XMCustomizedPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BFE713101D73CF6800050395 /* XMCustomizedPageControl.m */; };
 		C3DB815929436B754DF5C30C /* libPods-FocusImagesScrollView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0F6D8F6B70D300C0AE2065 /* libPods-FocusImagesScrollView.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,9 @@
 		BFBF4D011D6D8CC90068751C /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		BFBF4D021D6D8CC90068751C /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		BFBF4D0A1D6DAC430068751C /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
+		BFE7130F1D73CF6800050395 /* XMCustomizedPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMCustomizedPageControl.h; sourceTree = "<group>"; };
+		BFE713101D73CF6800050395 /* XMCustomizedPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMCustomizedPageControl.m; sourceTree = "<group>"; };
+		BFE713121D73DA5900050395 /* XMUIDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMUIDefines.h; sourceTree = "<group>"; };
 		CE0F6D8F6B70D300C0AE2065 /* libPods-FocusImagesScrollView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FocusImagesScrollView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -239,6 +243,8 @@
 			children = (
 				BF1273C61D6E85E200C81FDC /* XMFoucusSwipeView.h */,
 				BF1273C71D6E85E200C81FDC /* XMFoucusSwipeView.m */,
+				BFE7130F1D73CF6800050395 /* XMCustomizedPageControl.h */,
+				BFE713101D73CF6800050395 /* XMCustomizedPageControl.m */,
 			);
 			name = Views;
 			path = views;
@@ -247,6 +253,7 @@
 		BFBF4CF71D6D8A970068751C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BFE713121D73DA5900050395 /* XMUIDefines.h */,
 				BFBF4CFB1D6D8B410068751C /* XMBaseViewController.h */,
 				BFBF4CFC1D6D8B410068751C /* XMBaseViewController.m */,
 				BFBF4D011D6D8CC90068751C /* TestViewController.h */,
@@ -445,6 +452,7 @@
 				BFBF4CFD1D6D8B410068751C /* XMBaseViewController.m in Sources */,
 				BFBF4D041D6D8CC90068751C /* TestViewController.m in Sources */,
 				BF1273C81D6E85E200C81FDC /* XMFoucusSwipeView.m in Sources */,
+				BFE713111D73CF6800050395 /* XMCustomizedPageControl.m in Sources */,
 				BF1273CF1D6EC25000C81FDC /* MyLogger.m in Sources */,
 				BF1273D21D6ECFF200C81FDC /* PresentTestViewController.m in Sources */,
 				BFBF4CEF1D6D3FBE0068751C /* SwipeView.m in Sources */,

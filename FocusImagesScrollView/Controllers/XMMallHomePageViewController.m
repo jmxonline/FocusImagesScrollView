@@ -8,13 +8,16 @@
 
 #import "XMMallHomePageViewController.h"
 #import "XMFoucusSwipeView.h"
+#import "XMCustomizedPageControl.h"
 #import "MyLogger.h"
+#import "XMUIDefines.h"
 #import "PresentTestViewController.h"
 
 @interface XMMallHomePageViewController ()<SwipeViewDataSource, SwipeViewDelegate>
 
 @property (nonatomic, strong) XMFoucusSwipeView* swipeView;
 @property (nonatomic, strong) NSMutableArray* items;
+@property (nonatomic, strong) XMCustomizedPageControl* pageControl;
 
 @end
 
@@ -75,6 +78,23 @@
         [_items addObject:@(i)];
     }
     self.tableView.tableHeaderView = self.swipeView;
+    _pageControl = [[XMCustomizedPageControl alloc] init];
+    _pageControl.numberOfPages = _items.count;
+    [self.swipeView addSubview:_pageControl];
+}
+
+- (void)pageControlLayout
+{
+    CGRect frame = _pageControl.frame;
+    frame.origin.x = self.swipeView.frame.size.width - frame.size.width - 6.0;
+    frame.origin.y = self.swipeView.frame.size.height - frame.size.height - 6.0;
+    _pageControl.frame = frame;
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    [self pageControlLayout];
 }
 
 - (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
@@ -147,7 +167,8 @@
 
 - (void)swipeViewCurrentItemIndexDidChange:(SwipeView *)swipeView
 {
-    
+    _pageControl.currentPage = swipeView.currentItemIndex;
+    [_pageControl updateCurrentPageDisplay];
 }
 
 - (void)swipeView:(SwipeView *)swipeView didSelectItemAtIndex:(NSInteger)index;
