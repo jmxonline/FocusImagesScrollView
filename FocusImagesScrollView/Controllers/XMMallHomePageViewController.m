@@ -12,12 +12,15 @@
 #import "MyLogger.h"
 #import "XMUIDefines.h"
 #import "PresentTestViewController.h"
+#import <objc/runtime.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface XMMallHomePageViewController ()<SwipeViewDataSource, SwipeViewDelegate>
 
 @property (nonatomic, strong) XMFoucusSwipeView* swipeView;
 @property (nonatomic, strong) NSMutableArray* items;
 @property (nonatomic, strong) XMCustomizedPageControl* pageControl;
+@property (nonatomic, strong) NSMutableArray* imgUrls;
 
 @end
 
@@ -29,6 +32,8 @@
     // Do any additional setup after loading the view.
     self.title = NSLocalizedString(@"百川商城", nil);
     [self homePageSetup];
+    
+    [self showIvarNamesWithClass:[UIPageControl class]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,6 +41,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)showIvarNamesWithClass:(Class)cls
+{
+    LOGCA(@"--list ivarNames of class[%@]--", NSStringFromClass(cls));
+    uint count = 0;
+    Ivar *ivars = class_copyIvarList(cls, &count);
+    for (int i = 0; i < count; i++) {
+        Ivar ivar = ivars[i];
+        NSString* ivarName = [NSString stringWithCString:ivar_getName(ivar) encoding:NSUTF8StringEncoding];
+        printf(" %s\n", [ivarName UTF8String]);
+    }
+}
 /*
 #pragma mark - Navigation
 
@@ -73,7 +89,7 @@
 - (void)homePageSetup
 {
     self.items = [NSMutableArray array];
-    for (int i = 0; i < 12; i++)
+    for (int i = 0; i < 8; i++)
     {
         [_items addObject:@(i)];
     }
@@ -81,6 +97,11 @@
     _pageControl = [[XMCustomizedPageControl alloc] init];
     _pageControl.numberOfPages = _items.count;
     [self.swipeView addSubview:_pageControl];
+    
+    self.imgUrls = [NSMutableArray array];
+    for (int i = 0; i < 100; i++) {
+        [self.imgUrls addObject:[NSString stringWithFormat:@"https://s3.amazonaws.com/fast-image-cache/demo-images/FICDDemoImage%03d.jpg", i]];
+    }
 }
 
 - (void)pageControlLayout
@@ -104,48 +125,17 @@
 
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
-#if 1
-    UILabel *label = nil;
-    //create new view if no view is available for recycling
-    if (view == nil)
-    {
-        //don't do anything specific to the index within
-        //this `if (view == nil) {...}` statement because the view will be
-        //recycled and used with other index values later
-        view = [[UIView alloc] initWithFrame:self.swipeView.bounds];
-        view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        
-        label = [[UILabel alloc] initWithFrame:view.bounds];
-        label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        label.backgroundColor = [UIColor clearColor];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.font = [label.font fontWithSize:50];
-        label.tag = 1;
-        [view addSubview:label];
-    }
-    else
-    {
-        //get a reference to the label in the recycled view
-        label = (UILabel *)[view viewWithTag:1];
-    }
-    
-    //set background color
-    CGFloat red = (arc4random()&0xFF)/255.0;
-    CGFloat green = (arc4random()&0xFF)/255.0;
-    CGFloat blue = (arc4random()&0xFF)/255.0;
-    view.backgroundColor = [UIColor colorWithRed:red
-                                           green:green
-                                            blue:blue
-                                           alpha:1.0];
-    label.text = [_items[index] stringValue];
-#else
     if (view == nil) {
-        
+        UIImageView* imageView = [[UIImageView alloc] init];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        view = imageView;
     }
-    else {
-        UIImageView* imageView = view;
-    }
-#endif
+    UIImageView* imageView = (UIImageView*)view;
+    NSString* urlString = self.imgUrls[index];
+    UIImage* placeholder = [UIImage imageNamed:@"notFound"];
+    [imageView setShowActivityIndicatorView:YES];
+    [imageView setIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:placeholder options:SDWebImageRefreshCached];
     return view;
 }
 
