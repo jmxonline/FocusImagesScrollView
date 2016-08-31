@@ -59,10 +59,13 @@
 */
 - (void)drawRect:(CGRect)rect
 {
+    if (_hidesForSinglePage && _numberOfPages < 2) {
+        return;
+    }
     CGFloat diameter = 2*_radius;
     CGFloat indicatorDiameter = 2*_indicatorRadius;
     CGContextRef context = UIGraphicsGetCurrentContext();
-    for (int i=0; i<self.numberOfPages; i++)
+    for (int i = 0; i < self.numberOfPages; i++)
     {
         CGFloat x = 0.0;
         if (i == _currentPage)

@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIBarButtonItem* barItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissViewController)];
+    UIBarButtonItem* barItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissSelf)];
     self.navigationItem.leftBarButtonItem = barItem;
 }
 
@@ -26,7 +26,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dismissViewController
+- (void)dismissSelf
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }

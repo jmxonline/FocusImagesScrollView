@@ -33,6 +33,7 @@
     self.title = NSLocalizedString(@"百川商城", nil);
     [self homePageSetup];
     
+    //no use,just for kvc test.
     [self showIvarNamesWithClass:[UIPageControl class]];
 }
 
@@ -51,6 +52,8 @@
         NSString* ivarName = [NSString stringWithCString:ivar_getName(ivar) encoding:NSUTF8StringEncoding];
         printf(" %s\n", [ivarName UTF8String]);
     }
+    free(ivars);
+    printf("--end--\n");
 }
 /*
 #pragma mark - Navigation
@@ -95,6 +98,7 @@
     }
     self.tableView.tableHeaderView = self.swipeView;
     _pageControl = [[XMCustomizedPageControl alloc] init];
+    _pageControl.hidesForSinglePage = YES;
     _pageControl.numberOfPages = _items.count;
     [self.swipeView addSubview:_pageControl];
     
