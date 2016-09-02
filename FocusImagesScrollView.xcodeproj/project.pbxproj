@@ -14,6 +14,7 @@
 		BF1273D71D6ED6E500C81FDC /* return@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1273D51D6ED6E500C81FDC /* return@2x.png */; };
 		BF1273D81D6ED6E500C81FDC /* return@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BF1273D61D6ED6E500C81FDC /* return@3x.png */; };
 		BF1273DC1D6ED78500C81FDC /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1273DB1D6ED78500C81FDC /* UINavigationController+FDFullscreenPopGesture.m */; };
+		BF2461F81D791EA200852CF7 /* MustOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = BF2461F71D791EA200852CF7 /* MustOverride.m */; };
 		BFBF4CB91D6D3EE60068751C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBF4CB81D6D3EE60068751C /* main.m */; };
 		BFBF4CBC1D6D3EE60068751C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBF4CBB1D6D3EE60068751C /* AppDelegate.m */; };
 		BFBF4CC41D6D3EE60068751C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFBF4CC31D6D3EE60068751C /* Assets.xcassets */; };
@@ -59,6 +60,8 @@
 		BF1273D61D6ED6E500C81FDC /* return@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "return@3x.png"; sourceTree = "<group>"; };
 		BF1273DA1D6ED78500C81FDC /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		BF1273DB1D6ED78500C81FDC /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
+		BF2461F61D791EA200852CF7 /* MustOverride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MustOverride.h; sourceTree = "<group>"; };
+		BF2461F71D791EA200852CF7 /* MustOverride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MustOverride.m; sourceTree = "<group>"; };
 		BFBF4CB41D6D3EE60068751C /* FocusImagesScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusImagesScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFBF4CB81D6D3EE60068751C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BFBF4CBA1D6D3EE60068751C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -154,6 +157,15 @@
 			path = FDFullscreenPopGesture;
 			sourceTree = "<group>";
 		};
+		BF2461F51D791EA200852CF7 /* MustOverride */ = {
+			isa = PBXGroup;
+			children = (
+				BF2461F61D791EA200852CF7 /* MustOverride.h */,
+				BF2461F71D791EA200852CF7 /* MustOverride.m */,
+			);
+			path = MustOverride;
+			sourceTree = "<group>";
+		};
 		BFBF4CAB1D6D3EE60068751C = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +235,7 @@
 		BFBF4CEB1D6D3FBE0068751C /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				BF2461F51D791EA200852CF7 /* MustOverride */,
 				BF1273D91D6ED78500C81FDC /* FDFullscreenPopGesture */,
 				BFBF4CEC1D6D3FBE0068751C /* SwipeView */,
 			);
@@ -454,6 +467,7 @@
 				BF1273C81D6E85E200C81FDC /* XMFoucusSwipeView.m in Sources */,
 				BFE713111D73CF6800050395 /* XMCustomizedPageControl.m in Sources */,
 				BF1273CF1D6EC25000C81FDC /* MyLogger.m in Sources */,
+				BF2461F81D791EA200852CF7 /* MustOverride.m in Sources */,
 				BF1273D21D6ECFF200C81FDC /* PresentTestViewController.m in Sources */,
 				BFBF4CEF1D6D3FBE0068751C /* SwipeView.m in Sources */,
 				BFBF4CBC1D6D3EE60068751C /* AppDelegate.m in Sources */,

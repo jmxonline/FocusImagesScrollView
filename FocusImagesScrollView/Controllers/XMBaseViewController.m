@@ -9,6 +9,7 @@
 #import "XMBaseViewController.h"
 #import "MyLogger.h"
 #import "XMUIDefines.h"
+#import "MustOverride.h"
 
 NSString* const kNormalCell = @"Cell";
 #define kDefaultBackgroundColor [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]
@@ -42,6 +43,7 @@ NSString* const kNormalCell = @"Cell";
 #pragma mark- override method
 - (void)dealloc
 {
+    //SUBCLASS_MUST_OVERRIDE;
     LOG_SEL;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -49,6 +51,7 @@ NSString* const kNormalCell = @"Cell";
 //do not override.
 - (void)didMoveToParentViewController:(UIViewController *)parent
 {
+    SUBCLASS_CANNOT_OVERRIDE;
     [super didMoveToParentViewController:parent];
     if (!parent) {
         [self cancelRetainObjects];
