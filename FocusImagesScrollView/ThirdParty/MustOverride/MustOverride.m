@@ -64,7 +64,7 @@ static BOOL ClassOverridesMethod(Class cls, SEL selector)
         if (method_getName(methods[i]) == selector)
         {
             free(methods);
-            if ([kIgnoreClassNames containsObject:NSStringFromClass(cls)]) {
+            if ([kOverrideCheckIgnoreClassNames containsObject:NSStringFromClass(cls)]) {
                 return NO;
             }
             return YES;
@@ -101,7 +101,7 @@ static NSArray *SubclassesOfClass(Class baseClass)
     return subclasses;
 }
 
-static void CheckOverrides(bool need)
+static void CheckOverrides(bool flag)
 {
     Dl_info info;
     dladdr((const void *)&CheckOverrides, &info);
@@ -109,7 +109,7 @@ static void CheckOverrides(bool need)
     const MustOverrideValue mach_header = (MustOverrideValue)info.dli_fbase;
     
     NSString* clsName = @"MustOverride";
-    if (need) {
+    if (flag) {
         clsName = @"CannotOverride";
     }
     const MustOverrideSection *section = GetSectByNameFromHeader((void *)mach_header, "__DATA", clsName.UTF8String);
@@ -134,7 +134,7 @@ static void CheckOverrides(bool need)
 
         for (Class subclass in SubclassesOfClass(cls))
         {
-            if (need == ClassOverridesMethod(isClassMethod ? object_getClass(subclass) : subclass, selector))
+            if (flag == ClassOverridesMethod(isClassMethod ? object_getClass(subclass) : subclass, selector))
             {
                 [failures addObject:[NSString stringWithFormat:@"%@ [%@] %c%@ required by %@",
                                      subclass, clsName, isClassMethod ? '+' : '-', parts[1], className]];

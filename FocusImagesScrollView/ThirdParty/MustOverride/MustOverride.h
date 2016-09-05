@@ -40,9 +40,16 @@
 #define SUBCLASS_MUST_OVERRIDE __attribute__((used, section("__DATA,MustOverride" \
 ))) static const char *__must_override_entry__ = __func__
 
-//new add by jimmy.
+/**
+ *  forbid subclass to override some methods. --addition(by jimmy)
+ *
+ *  @param "__DATA "__DATA description
+ *  @param \       \ description
+ *
+ *  @return return value description
+ */
 #define SUBCLASS_CANNOT_OVERRIDE __attribute__((used, section("__DATA,CannotOverride" \
 ))) static const char *__cannot_override_entry__ = __func__
 
-#define kIgnoreClassNames [NSSet setWithObjects:@"XMBaseViewController", nil]
+#define kOverrideCheckIgnoreClassNames [NSSet setWithObjects:@"XMBaseViewController, XMSubLevelViewController", nil]
 
