@@ -234,6 +234,7 @@
         collectionView.backgroundColor = self.view.backgroundColor;
         collectionView.dataSource = self;
         collectionView.delegate = self;
+        collectionView.showsHorizontalScrollIndicator = NO;
         _headerCollectionView = collectionView;
     }
     return _headerCollectionView;
@@ -250,6 +251,9 @@
     cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HCell"
                                                      forIndexPath:indexPath];
     if (cell) {
+        NSString* urlString = self.imgUrls[indexPath.row];
+        UIImage* placeholder = [UIImage imageNamed:@"notFound"];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:placeholder options:SDWebImageRefreshCached];
         cell.titleLabel.text = @"值得买";
     }
     return cell;

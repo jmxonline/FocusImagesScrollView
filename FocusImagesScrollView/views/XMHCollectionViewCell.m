@@ -23,7 +23,7 @@
 - (void)setupContent
 {
     self.backgroundColor = [UIColor whiteColor];
-    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     [self.contentView addSubview:_imageView];
     
     _titleLabel = [[UILabel alloc] init];
@@ -32,10 +32,10 @@
 
 - (void)layoutSubviews
 {
-#define marginY 20
+#define marginY 10
 #define gapY    8
     [super layoutSubviews];
-    [_imageView sizeToFit];
+    //[_imageView sizeToFit];
     MoveTo(_imageView, (self.frame.size.width - _imageView.frame.size.width)/2, marginY);
     [_titleLabel sizeToFit];
     MoveTo(_titleLabel, (self.frame.size.width - _titleLabel.frame.size.width)/2, marginY + _imageView.frame.size.height + gapY);
