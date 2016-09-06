@@ -222,7 +222,7 @@
         CGFloat xspace = (maxCnt - 1)*kOnePixelsLineHeight;
         CGFloat fw = ceilf((self.view.frame.size.width - xspace)/maxCnt);
         _cellWidth = MAX(80, fw);
-        CGFloat fh = 100;
+        CGFloat fh = 90;
         layout.itemSize = CGSizeMake(fw, fh);
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         layout.sectionInset = UIEdgeInsetsMake(0, 0, space, 0);
@@ -238,11 +238,6 @@
     }
     return _headerCollectionView;
 }
-
-//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-//{
-//    return 1;
-//}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -272,7 +267,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGSize cellSize = CGSizeMake(_cellWidth, 100);
+    CGSize cellSize = CGSizeMake(_cellWidth, 90);
     return cellSize;
 }
 
