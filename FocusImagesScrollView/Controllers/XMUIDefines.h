@@ -14,6 +14,8 @@
 #define kOnePixelsLineHeight        1/[UIScreen mainScreen].scale
 #define LSTR(str)       NSLocalizedString(str, nil)
 
+#define MoveTo(view, x, y)          view.frame = CGRectMake(x, y, view.frame.size.width, view.frame.size.height)
+
 #define kTextColorHighlight colorFromRGB(0xf86442)
 #define LOG_SEL  LOGCA(@"**%@ -%@**", NSStringFromClass(self.class), NSStringFromSelector(_cmd))
 

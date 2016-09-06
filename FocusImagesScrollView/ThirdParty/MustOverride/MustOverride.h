@@ -51,5 +51,5 @@
 #define SUBCLASS_CANNOT_OVERRIDE __attribute__((used, section("__DATA,CannotOverride" \
 ))) static const char *__cannot_override_entry__ = __func__
 
-#define kOverrideCheckIgnoreClassNames [NSSet setWithObjects:@"XMBaseViewController, XMSubLevelViewController", nil]
+#define kOverrideCheckIgnoreClassNames [NSSet setWithObjects:@"XMBaseViewController", nil]
 

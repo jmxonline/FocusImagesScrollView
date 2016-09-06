@@ -14,14 +14,18 @@
 #import "PresentTestViewController.h"
 #import <objc/runtime.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "XMHCollectionViewCell.h"
 
-@interface XMMallHomePageViewController ()<SwipeViewDataSource, SwipeViewDelegate>
+@interface XMMallHomePageViewController ()<SwipeViewDataSource, SwipeViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) XMFoucusSwipeView* swipeView;
 @property (nonatomic, strong) NSMutableArray* items;
 @property (nonatomic, strong) XMCustomizedPageControl* pageControl;
 @property (nonatomic, strong) NSMutableArray* imgUrls;
 
+@property (nonatomic, strong) UIView* headerCollectionView;
+@property (nonatomic, assign) NSInteger numberOfHdrCells;
+@property (nonatomic, assign) CGFloat   cellWidth;
 @end
 
 @implementation XMMallHomePageViewController
@@ -182,7 +186,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
-    return 1;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -191,4 +195,91 @@
     cell.textLabel.text = [NSString stringWithFormat:@"Cell-%zd", indexPath.row];
     return cell;
 }
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return self.headerCollectionView;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return self.headerCollectionView.frame.size.height;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+#pragma mark- collectionView
+- (UIView *)headerCollectionView
+{
+    if (!_headerCollectionView) {
+        _numberOfHdrCells = 9;
+        UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
+        CGFloat maxCnt = _numberOfHdrCells;
+        CGFloat space = 10;
+        CGFloat xspace = (maxCnt - 1)*kOnePixelsLineHeight;
+        CGFloat fw = ceilf((self.view.frame.size.width - xspace)/maxCnt);
+        _cellWidth = MAX(80, fw);
+        CGFloat fh = 100;
+        layout.itemSize = CGSizeMake(fw, fh);
+        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        layout.sectionInset = UIEdgeInsetsMake(0, 0, space, 0);
+        layout.minimumLineSpacing = kOnePixelsLineHeight;
+        layout.minimumInteritemSpacing = kOnePixelsLineHeight;
+        CGRect rect = CGRectMake(0, 0, self.view.frame.size.width, 100);
+        UICollectionView* collectionView = [[UICollectionView alloc] initWithFrame:rect collectionViewLayout:layout];
+        [collectionView registerClass:[XMHCollectionViewCell class] forCellWithReuseIdentifier:@"HCell"];
+        collectionView.backgroundColor = self.view.backgroundColor;
+        collectionView.dataSource = self;
+        collectionView.delegate = self;
+        _headerCollectionView = collectionView;
+    }
+    return _headerCollectionView;
+}
+
+//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+//{
+//    return 1;
+//}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return _numberOfHdrCells;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    XMHCollectionViewCell *cell = nil;
+    cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HCell"
+                                                     forIndexPath:indexPath];
+    if (cell) {
+        cell.titleLabel.text = @"值得买";
+    }
+    return cell;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0.0f;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 0.0f;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGSize cellSize = CGSizeMake(_cellWidth, 100);
+    return cellSize;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+
+}
+
+
 @end
