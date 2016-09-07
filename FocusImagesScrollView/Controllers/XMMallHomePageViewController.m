@@ -15,6 +15,7 @@
 #import <objc/runtime.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "XMHCollectionViewCell.h"
+@import MediaPlayer;
 
 @interface XMMallHomePageViewController ()<SwipeViewDataSource, SwipeViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -38,7 +39,10 @@
     [self homePageSetup];
     
     //no use,just for kvc test.
-    [self showIvarNamesWithClass:[UIPageControl class]];
+    MPVolumeView *volumeView = [[MPVolumeView alloc] init];
+    UISlider* volumeViewSlider = [volumeView valueForKey:@"_volumeSlider"];
+    [self showIvarNamesWithClass:[volumeViewSlider class]];
+    [[self class] volumeOfAVSystem];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,6 +62,27 @@
     }
     free(ivars);
     printf("--end--\n");
+}
+
++ (float)volumeOfAVSystem
+{
+    //get volume by KVC(get key by runtime). If there is any good idea,pls tell me.(QQ:458154030)
+    MPVolumeView *volumeView = [[MPVolumeView alloc] init];
+    UISlider* volumeViewSlider = [volumeView valueForKey:@"_volumeSlider"];
+    float volumeValue = [[volumeViewSlider valueForKeyPath:@"_volumeController.volumeValue"] floatValue];
+    LOGCA(@"AVSystmeVolume:%f", volumeValue);
+    return volumeValue;
+}
+
++ (void)setAVSystemVolume:(float)volume
+{
+    MPVolumeView *volumeView = [[MPVolumeView alloc] init];
+    UISlider* volumeViewSlider = [volumeView valueForKey:@"_volumeSlider"];
+    float previous = [[volumeViewSlider valueForKeyPath:@"_volumeController.volumeValue"] floatValue];
+    [volumeViewSlider setValue:MIN(MAX(0.0, volume), 1.0) animated:NO];
+    // send UI control event to make the change effect right now.
+    [volumeViewSlider sendActionsForControlEvents:UIControlEventTouchUpInside];
+    LOGCA(@"AVSystmeVolume changed: %f to %f", previous, volume);
 }
 /*
 #pragma mark - Navigation
