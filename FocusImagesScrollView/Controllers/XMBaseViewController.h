@@ -7,6 +7,7 @@
 //  https://github.com/jmxonline
 
 #import <UIKit/UIKit.h>
+#import "XMUIDefines.h"
 
 extern NSString* const kNormalCell;
 @interface XMBaseViewController : UIViewController

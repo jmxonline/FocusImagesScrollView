@@ -9,8 +9,6 @@
 #import "XMMallHomePageViewController.h"
 #import "XMFoucusSwipeView.h"
 #import "XMCustomizedPageControl.h"
-#import "MyLogger.h"
-#import "XMUIDefines.h"
 #import "PresentTestViewController.h"
 #import <objc/runtime.h>
 #import <SDWebImage/UIImageView+WebCache.h>
