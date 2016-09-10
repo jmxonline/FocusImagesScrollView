@@ -27,4 +27,5 @@
 
 - (void)setHidden:(BOOL)hidden animated:(BOOL)animated;
 - (void)updateStateIfNeed;
+
 @end

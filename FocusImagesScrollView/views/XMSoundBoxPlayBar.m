@@ -92,14 +92,17 @@
 {
     self.userInteractionEnabled = YES;
     CGFloat const barH = 60.0;
+    CGFloat const coverH = 50.0;
     self.backgroundColor = [UIColor yellowColor];
     _screenW = [UIScreen mainScreen].bounds.size.width;
     _screenH = [UIScreen mainScreen].bounds.size.height;
     CGRect rect = CGRectMake(0, _screenH - barH, _screenW, barH);
     self.frame = rect;
     
-    rect = CGRectMake(0, 0, barH, barH);
+    rect = CGRectMake(10, (barH - coverH)/2 , coverH, coverH);
     _coverView = [[UIImageView alloc] initWithFrame:rect];
+    _coverView.layer.masksToBounds = YES;
+    _coverView.layer.cornerRadius = _coverView.width/2;
     [self addSubview:_coverView];
     
     // play item
@@ -107,7 +110,7 @@
     [button setAccessibilityLabel:LSTR(@"播放或暂停")];
     [button setImage:[UIImage imageNamed:@"toolbar_play_n_p"] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"toolbar_play_h_p"] forState:UIControlStateHighlighted];
-    //[play_btn addTarget:self action:@selector(onPlay:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(onPlayButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     _playButton = button;
     
@@ -117,7 +120,7 @@
     [button setImage:[UIImage imageNamed:@"toolbar_prev_n_p"] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"toolbar_prev_h_p"] forState:UIControlStateHighlighted];
     [button setImage:[UIImage imageNamed:@"toolbar_prev_d_p"] forState:UIControlStateDisabled];
-    //[prev_btn addTarget:self action:@selector(onPre:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(onPrevButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     _prevButton = button;
     
@@ -127,7 +130,7 @@
     [button setImage:[UIImage imageNamed:@"toolbar_next_n_p"] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"toolbar_next_h_p"] forState:UIControlStateHighlighted];
     [button setImage:[UIImage imageNamed:@"toolbar_next_d_p"] forState:UIControlStateDisabled];
-    //[next_btn addTarget:self action:@selector(onNext:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(onNextButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     _nextButton = button;
 }
@@ -172,14 +175,13 @@
 - (void)updateStateIfNeed
 {
     if ([_delegate playBarShouldPlaying]) {
-        if (_isLayerRotating) {
-            return;
-        }
-        if (_rotateLaunched) {
-            [self resumeRotateLayer:self.coverLayer];
-        }
-        else {
-            [self startRotateLayer:self.coverLayer];
+        if (!_isLayerRotating) {
+            if (_rotateLaunched) {
+                [self resumeRotateLayer:self.coverLayer];
+            }
+            else {
+                [self startRotateLayer:self.coverLayer];
+            }
         }
         _isLayerRotating = YES;
     }
@@ -187,9 +189,43 @@
         [self pauseRotateLayer:self.coverLayer];
         _isLayerRotating = NO;
     }
+    
+    [self setPlayButtonState:!_isLayerRotating];
 }
 
+- (void)setPlayButtonState:(BOOL)isPaused
+{
+    if (isPaused) {
+        [_playButton setImage:[UIImage imageNamed:@"toolbar_play_n_p"] forState:UIControlStateNormal];
+        [_playButton setImage:[UIImage imageNamed:@"toolbar_play_h_p"] forState:UIControlStateHighlighted];
+    }
+    else {
+        [_playButton setImage:[UIImage imageNamed:@"toolbar_pause_n_p"] forState:UIControlStateNormal];
+        [_playButton setImage:[UIImage imageNamed:@"toolbar_pause_h_p"] forState:UIControlStateHighlighted];
+    }
+}
 
+#pragma mark- button event
+- (void)onPlayButtonClicked:(id)sender
+{
+    if ([_delegate respondsToSelector:@selector(playBar:didTogglePlayPause:)]) {
+        [_delegate playBar:self didTogglePlayPause:sender];
+    }
+}
+
+- (void)onPrevButtonClicked:(id)sender
+{
+    if ([_delegate respondsToSelector:@selector(playBar:didClickedPrevious:)]) {
+        [_delegate playBar:self didClickedPrevious:sender];
+    }
+}
+
+- (void)onNextButtonClicked:(id)sender
+{
+    if ([_delegate respondsToSelector:@selector(playBar:didClickedNext:)]) {
+        [_delegate playBar:self didClickedNext:sender];
+    }
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

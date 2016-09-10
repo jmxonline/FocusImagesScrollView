@@ -147,7 +147,7 @@
 - (void)addOtherViews
 {
     self.playBar = [[XMSoundBoxPlayBar alloc] init];
-    [self.playBar setTrackCoverURL:self.imgUrls[0]];
+    [self.playBar setTrackCoverURL:self.imgUrls[2]];
     [self.view addSubview:self.playBar];
     CGRect frame = self.tableView.frame;
     frame.size.height -= self.playBar.frame.size.height;
@@ -334,5 +334,7 @@
         [self.view addSubview:self.playBar];
     }
 }
+
+
 
 @end
