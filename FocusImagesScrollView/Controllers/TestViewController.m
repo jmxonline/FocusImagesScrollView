@@ -542,6 +542,9 @@
     Class cls = NSClassFromString(vcNames[indexPath.row]);
     NSParameterAssert([cls isSubclassOfClass:[UIViewController class]]);
     UIViewController* viewController = [cls new];
+    if (1 == indexPath.row) {
+        viewController.title = @"barTest";
+    }
     return viewController;
 }
 

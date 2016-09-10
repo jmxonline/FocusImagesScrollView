@@ -13,9 +13,10 @@
 #import <objc/runtime.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "XMHCollectionViewCell.h"
+#import "XMSoundBoxPlayBar.h"
 @import MediaPlayer;
 
-@interface XMMallHomePageViewController ()<SwipeViewDataSource, SwipeViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface XMMallHomePageViewController ()<SwipeViewDataSource, SwipeViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) XMFoucusSwipeView* swipeView;
 @property (nonatomic, strong) NSMutableArray* items;
@@ -25,6 +26,8 @@
 @property (nonatomic, strong) UIView* headerCollectionView;
 @property (nonatomic, assign) NSInteger numberOfHdrCells;
 @property (nonatomic, assign) CGFloat   cellWidth;
+
+@property (nonatomic, strong) XMSoundBoxPlayBar* playBar;
 @end
 
 @implementation XMMallHomePageViewController
@@ -33,9 +36,14 @@
     self.isStyleTable = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = NSLocalizedString(@"百川商城", nil);
     [self homePageSetup];
-    
+    self.navigationController.delegate = self;
+    if (self.title.length) {
+        [self addOtherViews];
+    }
+    else {
+        self.title = NSLocalizedString(@"百川商城", nil);
+    }
     //no use,just for kvc test.
     MPVolumeView *volumeView = [[MPVolumeView alloc] init];
     UISlider* volumeViewSlider = [volumeView valueForKey:@"_volumeSlider"];
@@ -136,6 +144,17 @@
     }
 }
 
+- (void)addOtherViews
+{
+    self.playBar = [[XMSoundBoxPlayBar alloc] init];
+    [self.playBar setTrackCoverURL:self.imgUrls[0]];
+    [self.view addSubview:self.playBar];
+    CGRect frame = self.tableView.frame;
+    frame.size.height -= self.playBar.frame.size.height;
+    self.tableView.frame = frame;
+}
+
+
 - (void)pageControlLayout
 {
     CGRect frame = _pageControl.frame;
@@ -196,12 +215,13 @@
 - (void)swipeView:(SwipeView *)swipeView didSelectItemAtIndex:(NSInteger)index;
 {
     LOGCA(@"didSelectItemAtIndex:%zd", index);
-    [self presentViewController:[self testViewController] animated:YES completion:NULL];
+    [self presentViewController:[self presentViewControllerForIndex:index] animated:YES completion:NULL];
 }
 
-- (UIViewController*)testViewController
+- (UIViewController*)presentViewControllerForIndex:(NSInteger)index
 {
     PresentTestViewController* viewController = [[PresentTestViewController alloc] init];
+    viewController.title = [NSString stringWithFormat:@"%zd", index];
     UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:viewController];
     return navi;
 }
@@ -232,6 +252,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    XMBaseViewController* viewController = [[XMBaseViewController alloc] init];
+    [self.navigationController.view addSubview:self.playBar];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 #pragma mark- collectionView
@@ -303,5 +326,13 @@
 
 }
 
+#pragma mark- naviController delegate
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (viewController == self) {
+        //move to self.view
+        [self.view addSubview:self.playBar];
+    }
+}
 
 @end
