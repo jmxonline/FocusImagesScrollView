@@ -10,17 +10,22 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "XMUIDefines.h"
 #import "UIView+YYAdd.h"
+#import "CBAutoScrollLabel.h"
 
 @interface XMSoundBoxPlayBar()
 {
     UIImageView* _coverView;
     UIImage* _coverImage;
+    CBAutoScrollLabel* _trackLabel;
+    UILabel* _albumLabel;
+    
     BOOL _rotateLaunched;
     BOOL _isLayerRotating;
     
     CGFloat _screenW;
     CGFloat _screenH;
     
+    UIButton *_favButton;
     UIButton *_playButton, *_prevButton, *_nextButton;
 }
 @end
@@ -41,72 +46,50 @@
     return self;
 }
 
-- (void)setTrackCover:(UIImage *)cover
-{
-    _coverView.image = cover;
-}
-
-- (void)setTrackCoverURL:(NSURL *)url
-{
-    UIImage* placeholder = _coverView.image?:[UIImage imageNamed:@"xx"];
-    [_coverView sd_setImageWithURL:url placeholderImage:placeholder options:SDWebImageRefreshCached];
-}
-
-- (CALayer*)coverLayer
-{
-    return _coverView.layer;
-}
-
-- (void)startRotateLayer:(CALayer*)layer
-{
-    if (_rotateLaunched) return;
-    _rotateLaunched = YES;
-    CABasicAnimation *anim;
-    anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    anim.duration = 12;
-    anim.removedOnCompletion = NO;
-    anim.fromValue = [NSNumber numberWithFloat:0];
-    anim.toValue = [NSNumber numberWithFloat:M_PI*2];
-    anim.repeatCount = NSNotFound;
-    [layer addAnimation:anim forKey:@"animateTransform"];
-}
-
-- (void)pauseRotateLayer:(CALayer*)layer
-{
-    CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
-    layer.speed = 0.0;
-    layer.timeOffset = pausedTime;
-}
-
-- (void)resumeRotateLayer:(CALayer*)layer
-{
-    CFTimeInterval pausedTime = [layer timeOffset];
-    layer.speed = 1.0;
-    layer.timeOffset = 0.0;
-    layer.beginTime = 0.0;
-    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
-    layer.beginTime = timeSincePause;
-}
-
 - (void)setup
 {
     self.userInteractionEnabled = YES;
     CGFloat const barH = 60.0;
     CGFloat const coverH = 50.0;
-    self.backgroundColor = [UIColor yellowColor];
+    self.backgroundColor = [UIColor colorWithRed:247.0/255.0 green:248.0/255.0 blue:249.0 alpha:1];
     _screenW = [UIScreen mainScreen].bounds.size.width;
     _screenH = [UIScreen mainScreen].bounds.size.height;
     CGRect rect = CGRectMake(0, _screenH - barH, _screenW, barH);
     self.frame = rect;
     
-    rect = CGRectMake(10, (barH - coverH)/2 , coverH, coverH);
+    rect = CGRectMake(8, (barH - coverH)/2 , coverH, coverH);
     _coverView = [[UIImageView alloc] initWithFrame:rect];
     _coverView.layer.masksToBounds = YES;
     _coverView.layer.cornerRadius = _coverView.width/2;
     [self addSubview:_coverView];
     
-    // play item
+    rect = CGRectMake(_coverView.right + 6, 10, self.width - 230, 20);
+    _trackLabel = [[CBAutoScrollLabel alloc] initWithFrame:rect];
+    _trackLabel.text = @"声音名称";
+    _trackLabel.font = kTextFontLevel1;
+    _trackLabel.textColor = kTextColorLevelFirst;
+    _trackLabel.labelSpacing = 40.f;
+    [_trackLabel observeApplicationNotifications];
+    [self addSubview:_trackLabel];
+    
+    _albumLabel = [[UILabel alloc] init];
+    _albumLabel.font = kTextFontLevel2;
+    _albumLabel.textColor = kTextColorLevelSecond;
+    _albumLabel.text = @"专辑名称";
+    [_albumLabel sizeToFit];
+    rect = CGRectMake(_coverView.right + 6, 10 + _trackLabel.height, _trackLabel.width - 10, _albumLabel.height);
+    _albumLabel.frame = rect;
+    [self addSubview:_albumLabel];
+    
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setAccessibilityLabel:LSTR(@"收藏")];
+    [button setImage:[UIImage imageNamed:@"plu_fav"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(onFavButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:button];
+    _favButton = button;
+    // play item
+    button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setAccessibilityLabel:LSTR(@"播放或暂停")];
     [button setImage:[UIImage imageNamed:@"toolbar_play_n_p"] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"toolbar_play_h_p"] forState:UIControlStateHighlighted];
@@ -133,17 +116,36 @@
     [button addTarget:self action:@selector(onNextButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     _nextButton = button;
-}
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
+    
     [_playButton sizeToFit];
     [_prevButton sizeToFit];
     [_nextButton sizeToFit];
+    [_favButton sizeToFit];
     MoveTo(_nextButton, self.width - 30, (self.height - _nextButton.height)/2);
     MoveTo(_playButton, _nextButton.left - _playButton.width - 20, (self.height - _playButton.height)/2);
     MoveTo(_prevButton, _playButton.left - _prevButton.width - 20, _nextButton.top);
+    MoveTo(_favButton, _prevButton.left - _favButton.width - 30, (self.height - _favButton.height)/2);
+    
+    MAKE_LARGE_BY(_prevButton, _prevButton.frame, 20, 20);
+    MAKE_LARGE_BY(_nextButton, _nextButton.frame, 20, 20);
+    MAKE_LARGE_BY(_favButton, _favButton.frame, 20, 20);
+}
+
+- (void)setTrackCover:(UIImage *)cover
+{
+    _coverView.image = cover;
+}
+
+- (void)setTrackCoverURL:(NSURL *)url
+{
+    UIImage* placeholder = _coverView.image?:[UIImage imageNamed:@"sound_default"];
+    [_coverView sd_setImageWithURL:url placeholderImage:placeholder options:SDWebImageRefreshCached];
+}
+
+- (void)setTrackTitle:(NSString *)track albumTitle:(NSString *)album
+{
+    _trackLabel.text = track;
+    _albumLabel.text = album;
 }
 
 - (void)setHidden:(BOOL)hidden animated:(BOOL)animated
@@ -172,9 +174,17 @@
     }];
 }
 
+- (BOOL)isPlaying
+{
+    if ([_delegate respondsToSelector:@selector(playBarShouldPlaying)]) {
+        return [_delegate playBarShouldPlaying];
+    }
+    return NO;
+}
+
 - (void)updateStateIfNeed
 {
-    if ([_delegate playBarShouldPlaying]) {
+    if (self.isPlaying) {
         if (!_isLayerRotating) {
             if (_rotateLaunched) {
                 [self resumeRotateLayer:self.coverLayer];
@@ -186,10 +196,11 @@
         _isLayerRotating = YES;
     }
     else {
-        [self pauseRotateLayer:self.coverLayer];
-        _isLayerRotating = NO;
+        if (_isLayerRotating) {
+            [self pauseRotateLayer:self.coverLayer];
+            _isLayerRotating = NO;
+        }
     }
-    
     [self setPlayButtonState:!_isLayerRotating];
 }
 
@@ -209,6 +220,7 @@
 - (void)onPlayButtonClicked:(id)sender
 {
     if ([_delegate respondsToSelector:@selector(playBar:didTogglePlayPause:)]) {
+        LOGCA(@"%@", NSStringFromSelector(_cmd));
         [_delegate playBar:self didTogglePlayPause:sender];
     }
 }
@@ -216,6 +228,7 @@
 - (void)onPrevButtonClicked:(id)sender
 {
     if ([_delegate respondsToSelector:@selector(playBar:didClickedPrevious:)]) {
+        LOGCA(@"%@", NSStringFromSelector(_cmd));
         [_delegate playBar:self didClickedPrevious:sender];
     }
 }
@@ -223,15 +236,62 @@
 - (void)onNextButtonClicked:(id)sender
 {
     if ([_delegate respondsToSelector:@selector(playBar:didClickedNext:)]) {
+        LOGCA(@"%@", NSStringFromSelector(_cmd));
         [_delegate playBar:self didClickedNext:sender];
     }
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+
+- (void)onFavButtonClicked:(id)sender
+{
+    if ([_delegate respondsToSelector:@selector(playBar:didClickedFav:)]) {
+        LOGCA(@"%@", NSStringFromSelector(_cmd));
+        [_delegate playBar:self didClickedFav:sender];
+    }
 }
-*/
+
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
+#pragma mark -coverLayer rotation
+- (CALayer*)coverLayer
+{
+    return _coverView.layer;
+}
+
+- (void)startRotateLayer:(CALayer*)layer
+{
+    if (_rotateLaunched) return;
+    _rotateLaunched = YES;
+    CABasicAnimation *anim;
+    anim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    anim.duration = 9.0;
+    anim.removedOnCompletion = NO;
+    anim.fromValue = [NSNumber numberWithFloat:0];
+    anim.toValue = [NSNumber numberWithFloat:M_PI*2];
+    anim.repeatCount = NSNotFound;
+    [layer addAnimation:anim forKey:@"animateTransform"];
+}
+
+- (void)pauseRotateLayer:(CALayer*)layer
+{
+    CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+    layer.speed = 0.0;
+    layer.timeOffset = pausedTime;
+}
+
+- (void)resumeRotateLayer:(CALayer*)layer
+{
+    CFTimeInterval pausedTime = [layer timeOffset];
+    layer.speed = 1.0;
+    layer.timeOffset = 0.0;
+    layer.beginTime = 0.0;
+    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+    layer.beginTime = timeSincePause;
+}
+
 
 @end
